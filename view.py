@@ -287,13 +287,13 @@ def bootstrap_upload():
             filename = str(time.time()) + file.filename
             destination = "/".join([target, filename])
             file.save(destination)
-            f = open(APP_ROOT+"\\text\\"+filename, "r")
+            f = open(APP_ROOT+"/text/"+filename, "r")
             k = bootstrapping_col(text2data_col(f))
             result_col1 = k[0]
             result_col2 = k[1]
             range_result = range(len(result_col1))
             f.close()
-            os.remove(APP_ROOT+"\\text\\"+filename)
+            os.remove(APP_ROOT+"/text/"+filename)
 
         '''plot by bokeh'''
         p = figure(title='Spot Curve by Bokeh', plot_width=500, plot_height=400)
