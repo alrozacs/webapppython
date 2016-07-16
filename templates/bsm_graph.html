@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Python and Flask in Finance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/dashboard.css')}}" rel="stylesheet">
+
+    <!--Script for Bokeh Plot (with Widgets for interactive graph)-->
+    <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.css"
+    rel="stylesheet" type="text/css">
+    <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css"
+    rel="stylesheet" type="text/css">
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.js"></script>
+    {{ script_call|safe }}
+    {{ script_put|safe }}
+</head>
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               (top of the page) navbar:
+               python and flask in finance
+               about
+               reference
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Python and Flask for Finance</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               left side bar:
+               index
+               BSM Option Pricing
+               Option Price Interactive Graph <- current page
+               Bootstrap Interest Rates
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="http://webappmafin.herokuapp.com/">Index</a></li>
+            <li><a href="http://webappmafin.herokuapp.com/">BSM Option Pricing</a></li>
+            <li class="active"><a href="http://webappmafin.herokuapp.com/bsm_interactive">Option Price Interactive Graph<span class="sr-only">(current)</span></a></li>
+            <li><a href="http://webappmafin.herokuapp.com/bootstrap_upload">Bootstrap Interest Rate</a></li>
+
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Documentation</a></li>
+            <li><a href="">Links</a></li>
+            <li><a href="">Acknowledgement</a></li>
+          </ul>
+        </div>
+               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               Tab: Option Pricing
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+          <br>
+          <h3 class="page-header">Option Price Graph</h3>
+          <br>
+          <!-----------------------------------------------------------------
+          =====================Graph Section============================
+          -------------------------------------------------------------------->
+
+          <div class="panel panel-default">
+                <div class="panel-heading">Call Option Price Graph by Black&Scholes Model</div>
+                <div class="panel-body">
+                <!--graph-->
+
+
+                {{ div_call.p_call | safe }}
+                {{ div_call.slider_k_call | safe }}
+                {{ div_call.slider_r_call | safe }}
+                {{ div_call.slider_sigma_call | safe }}
+                {{ div_call.slider_t_call | safe }}
+                </div>
+            </div>
+
+                <div class="panel panel-default">
+                <div class="panel-heading">Put Option Price Graph by Black&Scholes Model</div>
+                <div class="panel-body">
+                {{ div_put.p_put | safe }}
+                {{ div_put.slider_k_put | safe }}
+                {{ div_put.slider_r_put | safe }}
+                {{ div_put.slider_sigma_put | safe }}
+                {{ div_put.slider_t_put | safe }}
+                </div>
+            </div>
+
+
+      </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

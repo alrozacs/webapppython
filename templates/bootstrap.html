@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Python and Flask in Finance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/dashboard.css')}}" rel="stylesheet">
+</head>
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               (top of the page) navbar:
+               python and flask in finance
+               about
+               reference
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Python and Flask for Finance</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               left side bar:
+               index
+               BSM Option Pricing
+               Bootstrap Interest Rates
+               Portfolio Value
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="http://webappmafin.herokuapp.com/">Index</a></li>
+            <li><a href='http://webappmafin.herokuapp.com/bsm/'>BSM Option Pricing</a></li>
+            <li><a href="http://webappmafin.herokuapp.com/bsm_interactive">Option Price Interactive Graph</a></li>
+            <li class="active"><a href="http://webappmafin.herokuapp.com/">Bootstrap Interest Rate <span class="sr-only">(current)</span></a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Documentation</a></li>
+            <li><a href="">Links</a></li>
+            <li><a href="">Acknowledgement</a></li>
+          </ul>
+        </div>
+               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               here is the tab that contains alternatives between bootstrapping via. uploading .txt file
+               and bootstrapping via. manual input from user
+               default page : .txt file upload
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+          <br>
+          <h3 class="page-header">Swap Curves Input</h3>
+           <ul class="nav nav-pills" role="tablist">
+                <li role="presentation" class="active"><a href="#">By file upload </a></li>
+                <li role="presentation"><a href="#">By custom input</a></li>
+                </ul>
+          <br>
+          <!-----------------------------------------------------------------
+          =====================1: Upload Section============================
+          -------------------------------------------------------------------->
+
+          <div class="panel panel-default">
+                <div class="panel-heading">Upload .txt file</div>
+                <div class="panel-body">
+                <!--upload form-->
+               <form action="" method=post enctype=multipart/form-data>
+                <p><input type=file name=file><input type=submit value=Upload>
+               </form>
+
+                </div>
+            </div>
+
+
+         <div class="panel panel-default">
+                <div class="panel-heading">Spot Rates Curve</div>
+                <div class="panel-body">
+
+
+          <h2 class="sub-header">Spot Rates</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Time to Maturity</th>
+                  <th>Spot Rates</th>
+                </tr>
+              </thead>
+              <tbody>
+               {% for i in range_result %}
+                <tr>
+                  <td>{{ result_col1[i] }}</td>
+                  <td>{{ result_col2[i] }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+         </div>
+         </div>
+            <!------------------ Bokeh Graph ----------------->
+
+             <div class="panel panel-default">
+                <div class="panel-heading">Spot Curve</div>
+                <div class="panel-body">
+            <link
+                href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.css" rel="stylesheet" type="text/css">
+                <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.js"></script>
+                {{ figJS|safe }}
+                <div class='bokeh'>
+                {{ figDiv|safe }}
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

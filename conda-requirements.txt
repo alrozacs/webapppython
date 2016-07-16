@@ -1,0 +1,6 @@
+python=3.5.2
+pip>=8.1.2
+conda>=4.1.6
+nomkl
+numpy>=1.11.1
+scipy>=0.17.1

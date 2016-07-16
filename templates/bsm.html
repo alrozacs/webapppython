@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Python and Flask in Finance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='css/dashboard.css')}}" rel="stylesheet">
+     <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.css"
+    rel="stylesheet" type="text/css">
+    <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css"
+    rel="stylesheet" type="text/css">
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.0.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.js"></script>
+</head>
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               (top of the page) navbar:
+               python and flask in finance
+               about
+               reference
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Python and Flask for Finance</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               left side bar:
+               index
+               BSM Option Pricing <- current page
+               Option Price Interactive Graph
+               Bootstrap Interest Rates
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="http://webappmafin.herokuapp.com/">Index</a></li>
+            <li class="active"><a href="http://webappmafin.herokuapp.com/bsm">BSM Option Pricing<span class="sr-only">(current)</span></a></li>
+            <li><a href="http://webappmafin.herokuapp.com/bsm_interactive">Option Price Interactive Graph</a></li>
+            <li><a href="http://webappmafin.herokuapp.com/bootstrap_upload">Bootstrap Interest Rate</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Documentation</a></li>
+            <li><a href="">Links</a></li>
+            <li><a href="">Acknowledgement</a></li>
+          </ul>
+        </div>
+               <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+               <!-----------------------------------------------------------------
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               Tab: Option Pricing
+               <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+               ------------------------------------------------------------------->
+
+          <br>
+          <h3 class="page-header">Option Pricing</h3>
+          <br>
+          <!-----------------------------------------------------------------
+          =====================1: Form Section============================
+          -------------------------------------------------------------------->
+
+          <div class="panel panel-default">
+                <div class="panel-heading">Black & Scholes Model Parameters</div>
+                <div class="panel-body">
+                <!--input form-->
+                <form method=post action="">
+                    <table>
+                        {% for field in form %}
+                            <tr>
+                            <td>{{ field.label }}</td>     </td><td>{{ field }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    </table>
+                <p><input type=submit value=Compute></form></p>
+
+
+                    {% if price != None %}
+
+                    option price is {{price}}
+                    {% else %}
+                    please input fields
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+      </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
